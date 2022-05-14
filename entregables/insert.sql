@@ -1,0 +1,1 @@
+/* Fichero con el insert global*/
