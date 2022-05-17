@@ -1,9 +1,4 @@
 # UUID, modelo
-from ast import Return
-from pyexpat import model
-
-from attr import field
-
 # Separamos el uuid del modelo
 with open("entregables/sql/modelo.sql","r",encoding="utf-8") as f:
   model_lines = f.readlines()[7:]
