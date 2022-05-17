@@ -73,7 +73,7 @@ CREATE TABLE cancelaciones (
   CONSTRAINT fk_  FOREIGN KEY (id)  REFERENCES incidencias(id),
 );
 
-CREATE TABLE desvio (
+CREATE TABLE desvios (
   id  VARCHAR2(40),
   CONSTRAINT pk_  PRIMARY KEY (id),
   CONSTRAINT fk_  FOREIGN KEY (id)  REFERENCES incidencias(id),
@@ -81,7 +81,7 @@ CREATE TABLE desvio (
   CONSTRAINT fk_  FOREIGN KEY (id) REFERENCES aeropuerto(iata)
 );
 
-CREATE TABLE retraso (
+CREATE TABLE retrasos (
   id        VARCHAR2(40),
   delay     NUMBER  NOT NULL,
   delayType VARCHAR2(50),
