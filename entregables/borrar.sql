@@ -1,10 +1,9 @@
-DROP TABLE aeropuerto;
+DROP TABLE cancelaciones;
+DROP TABLE desvios;
+DROP TABLE retrasos;
 DROP TABLE vuelo;
+DROP TABLE aeropuerto;
 DROP TABLE avion;
 DROP TABLE aerolinea;
 DROP TABLE modelo;
 DROP TABLE fabricante;
-DROP TABLE incidencias;
-DROP TABLE cancelaciones;
-DROP TABLE desvio;
-DROP TABLE retraso;

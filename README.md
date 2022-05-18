@@ -2,17 +2,13 @@
 
 ## Borrado de tablas
 ```sql
-DROP TABLE capitulos;
-DROP TABLE series;
-DROP TABLE relacion_peliculas;
-DROP TABLE peliculas;
-DROP TABLE interpreta;
-DROP TABLE participa;
-DROP TABLE personajes;
-DROP TABLE actores;
-DROP TABLE colabora;
-DROP TABLE personal;
-DROP TABLE roles;
-DROP TABLE generos;
-DROP TABLE contenido;
+DROP TABLE cancelaciones;
+DROP TABLE desvios;
+DROP TABLE retrasos;
+DROP TABLE vuelo;
+DROP TABLE aeropuerto;
+DROP TABLE avion;
+DROP TABLE aerolinea;
+DROP TABLE modelo;
+DROP TABLE fabricante;
 ```
