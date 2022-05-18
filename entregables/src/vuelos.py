@@ -21,7 +21,7 @@ vuelos_all = [",".join(flight.split(',')[:13]) for flight in allFlights]  # data
 vuelos = []
 for flight in vuelos_all:
   aux = flight.split(',')
-  vuelos.append("\'" + aux[0] + "\'," + aux[1] + ",\'" + "\',\'".join(aux[2:6]) + "\'," + ",".join(aux[6:]))
+  vuelos.append("\'" + aux[0] + "\'," + aux[1] + ",\'" + "\',\'".join(aux[2:6]).replace(",\'NULL\',",",NULL,") + "\'," + ",".join(aux[6:]).replace(",,",",NULL,").replace(",,",",NULL,").replace(",,",",NULL,").replace(",,",",NULL,").replace(",,",",NULL,"))
 
 # Incidencias
 # Incidencias - cancelaciones
