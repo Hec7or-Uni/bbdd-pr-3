@@ -73,29 +73,28 @@ for flight in inc_desvios:
   data = aux[21:26]
   div1, div2 = aux[26:28], aux[28:30]
 
-  # PREFIX = "\'" + str(uuid1()) + "\',\'" + uuid + "\'," + str(data).replace("[","").replace("]","").replace(" ","").replace("\'\'","NULL").replace("\'","") + ","
-  PREFIX = "\'" + str(uuid1()) + "\',\'" + uuid + "\',"
+  PREFIX = "\',\'" + uuid + "\',"
 
   if (div1[0] != "NULL" and div1[0] != "") and (div2[0] != "NULL" and div2[0] != "") and data[1] == "0":
-    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
   elif (div1[0] != "NULL" and div1[0] != "") and (div2[0] != "NULL" and div2[0] != "") and data[1] == "1":
-    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
-    desvios.append(PREFIX + "\'" + div2[0]+ "\',\'" + div2[1] + "\',\'" + destino + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + div2[0]+ "\',\'" + div2[1] + "\',\'" + destino + "\'")
   elif (div1[0] != "NULL" and div1[0] != "") and data[1] == "0":
-    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
   elif (div1[0] != "NULL" and div1[0] != "") and data[1] == "1":
-    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + destino + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + destino + "\'")
   else:
-    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + origen + "\'")
+    desvios.append("\'" + str(uuid1()) + PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + origen + "\'")
 
 def createInsert(tabla: str, cabeceras: str, values: str) -> str:
   return f"INSERT INTO {tabla} {cabeceras} VALUES ({values});\n"
 
 cabeceraVuelos = ["id","flightNum","flightDate","tailNum","origin","destination","distance","depTime","arrTime","crsDepTime","crsArrTime","crsElapsedTime","actualElapsedTime"]
-cabeceraCancelaciones = ["id", "idVuelo", "cancellationCode"]
+cabeceraCancelaciones = ["id", "idVuelo", "cancellation"]
 cabeceraDesvios = ["id", "idVuelo","origin","tailNum","destination"]
 cabeceraDelays = ["id", "idVuelo", "delayType", "delay"]
 

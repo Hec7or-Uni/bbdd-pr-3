@@ -65,7 +65,7 @@ CREATE TABLE cancelaciones (
   idVuelo       VARCHAR2(40),
   cancellation  VARCHAR2(100) NOT NULL,
   CONSTRAINT pk_cancelaciones         PRIMARY KEY (id),
-  CONSTRAINT fk_cancelaciones_idVuelo FOREIGN KEY (id)  REFERENCES vuelo(id)
+  CONSTRAINT fk_cancelaciones_idVuelo FOREIGN KEY (idVuelo)  REFERENCES vuelo(id)
 );
 
 CREATE TABLE desvios (
