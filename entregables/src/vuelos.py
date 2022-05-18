@@ -100,7 +100,7 @@ cabeceraDesvios = ["id", "idVuelo","origin","tailNum","destination"]
 cabeceraDelays = ["id", "idVuelo", "delayType", "delay"]
 
 for cabeceras, tabla, data in zip([cabeceraVuelos, cabeceraCancelaciones, cabeceraDesvios, cabeceraDelays], ["vuelo", "cancelaciones", "desvios", "retrasos"], [vuelos, cancelaciones, desvios, retrasos]):
-  with open(f"entregables/test/{tabla}.sql", "w", encoding="utf-8") as f:
+  with open(f"entregables/sql/{tabla}.sql", "w", encoding="utf-8") as f:
     cabeceras = str(cabeceras).replace("[","(").replace("]",")").replace(" ","").replace("\'","")
     for row in data:
       f.write(createInsert(tabla, cabeceras, row))

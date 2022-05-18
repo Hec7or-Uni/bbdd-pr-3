@@ -60,31 +60,32 @@ CREATE TABLE fabricante (
   CONSTRAINT pk_fabricante  PRIMARY KEY (manufacturer)
 );
 
--- INCIDENCIAS
-CREATE TABLE incidencias (
-  id  VARCHAR2(40),
-  CONSTRAINT pk_  PRIMARY KEY (id),
-);
-
 CREATE TABLE cancelaciones (
   id            VARCHAR2(40),
+  idVuelo       VARCHAR2(40),
   cancellation  VARCHAR2(100) NOT NULL,
-  CONSTRAINT pk_  PRIMARY KEY (id),
-  CONSTRAINT fk_  FOREIGN KEY (id)  REFERENCES incidencias(id),
+  CONSTRAINT pk_cancelaciones         PRIMARY KEY (id),
+  CONSTRAINT fk_cancelaciones_idVuelo FOREIGN KEY (id)  REFERENCES vuelo(id)
 );
 
 CREATE TABLE desvios (
-  id  VARCHAR2(40),
-  CONSTRAINT pk_  PRIMARY KEY (id),
-  CONSTRAINT fk_  FOREIGN KEY (id)  REFERENCES incidencias(id),
-  CONSTRAINT fk_  FOREIGN KEY (id) REFERENCES avion(tailNum)
-  CONSTRAINT fk_  FOREIGN KEY (id) REFERENCES aeropuerto(iata)
+  id          VARCHAR2(40),
+  idVuelo     VARCHAR2(40),
+  origin      VARCHAR2(4),
+  tailNum     VARCHAR2(7),
+  destination VARCHAR2(4),
+  CONSTRAINT pk_desvios               PRIMARY KEY (id),
+  CONSTRAINT fk_desvios_idVuelo       FOREIGN KEY (idVuelo)     REFERENCES vuelo(id),
+  CONSTRAINT fk_desvios_origin        FOREIGN KEY (origin)      REFERENCES aeropuerto(iata),
+  CONSTRAINT fk_desvios_tailnum       FOREIGN KEY (tailNum)     REFERENCES avion(tailNum),
+  CONSTRAINT fk_desvios_destination   FOREIGN KEY (destination) REFERENCES aeropuerto(iata)
 );
 
 CREATE TABLE retrasos (
   id        VARCHAR2(40),
-  delay     NUMBER  NOT NULL,
-  delayType VARCHAR2(50),
-  CONSTRAINT pk_  PRIMARY KEY (id),
-  CONSTRAINT fk_  FOREIGN KEY (id)  REFERENCES incidencias(id),
+  idVuelo   VARCHAR2(40),
+  delay     NUMBER        NOT NULL,
+  delayType VARCHAR2(50)  NOT NULL,
+  CONSTRAINT pk_retrasos          PRIMARY KEY (id),
+  CONSTRAINT fk_retrasos_idvuelo  FOREIGN KEY (idVuelo)  REFERENCES vuelo(id)
 );
