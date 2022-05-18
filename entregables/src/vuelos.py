@@ -25,13 +25,20 @@ for flight in vuelos_all:
 
 # Incidencias
 # Incidencias - cancelaciones
+cancellationType = {
+  'A':'Carrier',
+  'B':'Weather',
+  'C':'National Air System',
+  'D':'Security'
+}
+
 inc_cancelaciones = [str(flight) for flight in allFlights if flight.split(',')[13] == "1"]
 cancelaciones = []
 for flight in inc_cancelaciones:
   aux  = flight.split(',')
   uuid = aux[0]
-  data = str(aux[14:15]).replace("[","").replace("]","")
-  cancelaciones.append("\'" + str(uuid1()) + "\',\'" + uuid + "\'," + data)
+  data = aux[14]
+  cancelaciones.append("\'" + str(uuid1()) + "\',\'" + uuid + "\',\'" + cancellationType[data] + "\'")
 
 # Incidencias - retrasos
 delayTypes = {
@@ -61,34 +68,35 @@ desvios = []
 for flight in inc_desvios:
   aux  = flight.split(',') 
   uuid = aux[0]
-  tailnum = aux[1]
+  tailnum = aux[3]
   origen, destino = aux[4], aux[5]
   data = aux[21:26]
   div1, div2 = aux[26:28], aux[28:30]
 
-  PREFIX = "\'" + str(uuid1()) + "\',\'" + uuid + "\'," + str(data).replace("[","").replace("]","").replace(" ","").replace("\'\'","NULL").replace("\'","") + ","
+  # PREFIX = "\'" + str(uuid1()) + "\',\'" + uuid + "\'," + str(data).replace("[","").replace("]","").replace(" ","").replace("\'\'","NULL").replace("\'","") + ","
+  PREFIX = "\'" + str(uuid1()) + "\',\'" + uuid + "\',"
 
-  if (div1[0] != "NULL" or div1[0] != "") and (div2[0] != "NULL" or div2[0] != "") and data[1] == "0":
-    desvios.append(PREFIX + "\'" + origen + "\'," + tailnum + ",\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\'," + div1[1] + ",\'" + div2[0] + "\'")
-  elif (div1[0] != "NULL" or div1[0] != "") and (div2[0] != "NULL" or div2[0] != "") and data[1] == "1":
-    desvios.append(PREFIX + "\'" + origen + "\'," + tailnum + ",\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\'," + div1[1] + ",\'" + div2[0] + "\'")
-    desvios.append(PREFIX + "\'" + div2[0]+ "\'," + div2[1] + ",\'" + destino + "\'")
-  elif (div1[0] != "NULL" or div1[0] != "") and data[1] == "0":
-    desvios.append(PREFIX + "\'" + origen + "\'," + tailnum + ",\'" + div1[0] + "\'")
-  elif (div1[0] != "NULL" or div1[0] != "") and data[1] == "1":
-    desvios.append(PREFIX + "\'" + origen + "\'," + tailnum + ",\'" + div1[0] + "\'")
-    desvios.append(PREFIX + "\'" + div1[0]+ "\'," + div1[1] + ",\'" + destino)
+  if (div1[0] != "NULL" and div1[0] != "") and (div2[0] != "NULL" and div2[0] != "") and data[1] == "0":
+    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
+  elif (div1[0] != "NULL" and div1[0] != "") and (div2[0] != "NULL" and div2[0] != "") and data[1] == "1":
+    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + div2[0] + "\'")
+    desvios.append(PREFIX + "\'" + div2[0]+ "\',\'" + div2[1] + "\',\'" + destino + "\'")
+  elif (div1[0] != "NULL" and div1[0] != "") and data[1] == "0":
+    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+  elif (div1[0] != "NULL" and div1[0] != "") and data[1] == "1":
+    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + div1[0] + "\'")
+    desvios.append(PREFIX + "\'" + div1[0]+ "\',\'" + div1[1] + "\',\'" + destino + "\'")
   else:
-    desvios.append(PREFIX + "\'" + origen + "\'," + tailnum + ",\'" + origen + "\'")
+    desvios.append(PREFIX + "\'" + origen + "\',\'" + tailnum + "\',\'" + origen + "\'")
 
 def createInsert(tabla: str, cabeceras: str, values: str) -> str:
   return f"INSERT INTO {tabla} {cabeceras} VALUES ({values});\n"
 
 cabeceraVuelos = ["id","flightNum","flightDate","tailNum","origin","destination","distance","depTime","arrTime","crsDepTime","crsArrTime","crsElapsedTime","actualElapsedTime"]
 cabeceraCancelaciones = ["id", "idVuelo", "cancellationCode"]
-cabeceraDesvios = ["id", "idVuelo","divAirportLandings","divReachedDest","divActualElapsedTime","divArrDelay","divDistance","origin","tailNum","destination"]
+cabeceraDesvios = ["id", "idVuelo","origin","tailNum","destination"]
 cabeceraDelays = ["id", "idVuelo", "delayType", "delay"]
 
 for cabeceras, tabla, data in zip([cabeceraVuelos, cabeceraCancelaciones, cabeceraDesvios, cabeceraDelays], ["vuelo", "cancelaciones", "desvios", "retrasos"], [vuelos, cancelaciones, desvios, retrasos]):
