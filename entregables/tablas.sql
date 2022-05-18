@@ -62,7 +62,7 @@ CREATE TABLE vuelo (
 
 CREATE TABLE cancelaciones (
   id            VARCHAR2(40),
-  idVuelo       VARCHAR2(40),
+  idVuelo       VARCHAR2(40)  NOT NULL,
   cancellation  VARCHAR2(100) NOT NULL,
   CONSTRAINT pk_cancelaciones         PRIMARY KEY (id),
   CONSTRAINT fk_cancelaciones_idVuelo FOREIGN KEY (idVuelo)  REFERENCES vuelo(id)
@@ -70,10 +70,10 @@ CREATE TABLE cancelaciones (
 
 CREATE TABLE desvios (
   id          VARCHAR2(40),
-  idVuelo     VARCHAR2(40),
-  origin      VARCHAR2(4),
-  tailNum     VARCHAR2(7),
-  destination VARCHAR2(4),
+  idVuelo     VARCHAR2(40)  NOT NULL,
+  origin      VARCHAR2(4)   NOT NULL,
+  tailNum     VARCHAR2(7)   NOT NULL,
+  destination VARCHAR2(4)   NOT NULL,
   CONSTRAINT pk_desvios               PRIMARY KEY (id),
   CONSTRAINT fk_desvios_idVuelo       FOREIGN KEY (idVuelo)     REFERENCES vuelo(id),
   CONSTRAINT fk_desvios_origin        FOREIGN KEY (origin)      REFERENCES aeropuerto(iata),
@@ -83,7 +83,7 @@ CREATE TABLE desvios (
 
 CREATE TABLE retrasos (
   id        VARCHAR2(40),
-  idVuelo   VARCHAR2(40),
+  idVuelo   VARCHAR2(40)  NOT NULL,
   delay     NUMBER        NOT NULL,
   delayType VARCHAR2(50)  NOT NULL,
   CONSTRAINT pk_retrasos          PRIMARY KEY (id),
