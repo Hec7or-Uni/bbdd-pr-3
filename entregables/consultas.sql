@@ -34,10 +34,8 @@ SELECT A.name FROM aerolinea A, (
     SELECT * FROM (
         SELECT * FROM(
             SELECT P.carrier, COUNT(*) veces FROM (
-                SELECT carrier FROM avion, (
-                    SELECT tailNum FROM vuelo,aeropuerto A,aeropuerto B WHERE origin = A.iata 
-                    AND destination = B.iata AND A.state = B.state) Z 
-                WHERE avion.tailNum = Z.tailNum)
+                SELECT carrier FROM vuelo,aeropuerto A,aeropuerto B WHERE origin = A.iata 
+                AND destination = B.iata AND A.state = B.state)
             P GROUP BY P.carrier) 
         ORDER BY veces DESC)
 WHERE ROWNUM = 1) B WHERE A.code = B.carrier;
