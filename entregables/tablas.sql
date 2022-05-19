@@ -63,7 +63,8 @@ CREATE TABLE vuelo (
   CONSTRAINT fk_vuelo_tailNum     FOREIGN KEY (tailNum)     REFERENCES avion(tailNum),
   CONSTRAINT fk_avion_carrier     FOREIGN KEY (carrier)     REFERENCES aerolinea(code),
   UNIQUE (origin, flightNum, flightDate),
-  CONSTRAINT ck_vuelo_distance CHECK (distance >= 0)
+  CONSTRAINT ck_vuelo_distance            CHECK (distance >= 0),
+  CONSTRAINT ck_vuelo_origin_destination  CHECK (origin <> destination)
 );
 
 CREATE TABLE cancelaciones (

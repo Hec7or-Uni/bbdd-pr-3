@@ -11,8 +11,9 @@ with open("entregables/data/aviones.csv","r",encoding="utf-8") as f:
   plane_lines = f.readlines()[1:]
   plane_lines = [line.replace("\n","") for line in plane_lines]
   # parte de la linea de avion que identifica un modelo
-  plane_lines_rest  = [",".join(line.split(",")[:3]) for line in plane_lines]   # Lista de info avion manteniendo el orden 
+  plane_lines_rest  = [",".join(line.split(",")[:2]) for line in plane_lines]   # Lista de info avion manteniendo el orden 
   plane_lines_model = [",".join(line.split(",")[3:]) for line in plane_lines]   # Lista de modelos    manteniendo el orden 
+  print(plane_lines_rest[0])
 
 # Creamos un dict({ 'modelo':'uuid' })
 model_dict = dict()
@@ -32,7 +33,7 @@ for rest, model in zip(plane_lines_rest, plane_lines_model):
 
 # generacion de los insert
 with open("entregables/sql/avion.sql","w",encoding="utf-8") as f:
-  PREFIX = "INSERT INTO avion (tailNum,year,carrier,modelId) VALUES ("
+  PREFIX = "INSERT INTO avion (tailNum,year,modelId) VALUES ("
   SUFIX = ");\n"
   for p_info in planes:
     p_info = str(p_info.split(',')).replace("[","").replace("]", "").replace(" ","").replace("\'NULL\'","NULL")
