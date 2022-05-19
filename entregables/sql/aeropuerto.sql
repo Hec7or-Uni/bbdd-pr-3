@@ -1141,7 +1141,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CKP','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CKU','Cordova Muni','Cordova','AK','USA',60.54390333,-145.72670420);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CKV','Outlaw','Clarksville','TN','USA',36.62188083,-87.41495361);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CKX','Chicken','Chicken','AK','USA',64.07133833,-141.95227920);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CLD','MC Clellan-Palomar Airport','NA','NA','USA',33.12723100,-117.27872700);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CLD','MC Clellan-Palomar Airport',NULL,NULL,'USA',33.12723100,-117.27872700);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CLE','Cleveland-Hopkins Intl','Cleveland','OH','USA',41.41089417,-81.84939667);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CLI','Clintonville Municipal','Clintonville','WI','USA',44.61381306,-88.73126667);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('CLK','Clinton Municipal','Clinton','OK','USA',35.53832778,-98.93269500);
@@ -1720,7 +1720,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HFY','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HGR','Hagerstown Regional-Richard Henson','Hagerstown','MD','USA',39.70794444,-77.72950000);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHF','Hemphill County','Canadian','TX','USA',35.89530778,-100.40363970);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHG','Huntington Municipal','Huntington','IN','USA',40.85299000,-85.45941917);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHH','Hilton Head','NA','NA','USA',32.22438400,-80.69762900);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHH','Hilton Head',NULL,NULL,'USA',32.22438400,-80.69762900);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHR','Jack Northrop Field/Hawthorne Municipal','Hawthorne','CA','USA',33.92283972,-118.33518720);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HHW','Stan Stamper Municipal','Hugo','OK','USA',34.03482556,-95.54190611);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('HI01','Princeville','Hanalei','HI','USA',22.20919000,-159.44553390);
@@ -2256,7 +2256,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MHR','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MHT','Manchester','Manchester','NH','USA',42.93451639,-71.43705583);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MHV','Mojave','Mojave','CA','USA',35.05936472,-118.15185610);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIA','Miami International','Miami','FL','USA',25.79325000,-80.29055556);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIB','Minot AFB','NA','NA','USA',48.41576900,-101.35803900);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIB','Minot AFB',NULL,NULL,'USA',48.41576900,-101.35803900);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIC','Crystal','Minneapolis','MN','USA',45.06198611,-93.35393750);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIE','Delaware County','Muncie','IN','USA',40.24234806,-85.39586000);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MIO','Miami Municipal','Miami','OK','USA',36.90922083,-94.88750028);
@@ -2317,7 +2317,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MPZ','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQB','Macomb Municipal','Macomb','IL','USA',40.52034556,-90.65246389);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQI','Dare County Regional','Manteo','NC','USA',35.91898806,-75.69553944);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQJ','Mount Comfort','Indianapolis','IN','USA',39.84348556,-85.89706389);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQT','Marquette County Airport','NA','NA','USA',46.35363900,-87.39536100);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQT','Marquette County Airport',NULL,NULL,'USA',46.35363900,-87.39536100);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQW','Telfair-Wheeler','McRae','GA','USA',32.09577778,-82.88002778);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MQY','Smyrna','Smyrna','TN','USA',36.00897944,-86.52007667);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('MRB','Eastern Wv Reg/Shephard','Martinsburg','WV','USA',39.40193278,-77.98458139);
@@ -2757,14 +2757,14 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RBG','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RBL','Red Bluff Municipal','Red Bluff','CA','USA',40.15065667,-122.25229030);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RBW','Walterboro Municipal','Walterboro','SC','USA',32.92052778,-80.64125000);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RBY','Ruby','Ruby','AK','USA',64.72721556,-155.46988860);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RCA','Ellsworth AFB','NA','NA','USA',44.14509400,-103.10356700);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RCA','Ellsworth AFB',NULL,NULL,'USA',44.14509400,-103.10356700);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RCR','Fulton County','Rochester','IN','USA',41.06554833,-86.18170444);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RCX','Rusk County','Ladysmith','WI','USA',45.49825694,-91.00186361);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDD','Redding Municipal','Redding','CA','USA',40.50898361,-122.29340190);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDG','Reading Muni,Gen Carl A Spaatz','Reading','PA','USA',40.37850000,-75.96525000);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDK','Red Oak Municipal','Red Oak','IA','USA',41.01052778,-95.25986111);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDM','Roberts','Redmond','OR','USA',44.25406722,-121.14996330);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDR','Grand Forks AFB','NA','NA','USA',47.96116700,-97.40116700);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDR','Grand Forks AFB',NULL,NULL,'USA',47.96116700,-97.40116700);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDU','Raleigh-Durham International','Raleigh','NC','USA',35.87763889,-78.78747222);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RDV','Red Devil','Red Devil','AK','USA',61.78764333,-157.34793440);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RED','Red Lodge','Red Lodge','MT','USA',45.18744472,-109.26737780);
@@ -2799,8 +2799,8 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('RNV','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROA','Roanoke Regional/ Woodrum','Roanoke','VA','USA',37.32546833,-79.97542833);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROC','Greater Rochester Int l','Rochester','NY','USA',43.11886611,-77.67238389);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROG','Rogers Municipal-Carter','Rogers','AR','USA',36.37229667,-94.10686972);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROP','Prachinburi','NA','NA','Thailand',14.07833300,101.37833400);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROR','Babelthoup/Koror','NA','NA','Palau',7.36722200,134.54416700);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROP','Prachinburi',NULL,NULL,'Thailand',14.07833300,101.37833400);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROR','Babelthoup/Koror',NULL,NULL,'Palau',7.36722200,134.54416700);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROS','Rush City Regional','Rush City','MN','USA',45.69801389,-92.95298972);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROW','Roswell Industrial Air Center','Roswell','NM','USA',33.30155556,-104.53055560);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('ROX','Roseau Municipal','Roseau','MN','USA',48.85603806,-95.69703861);
@@ -2905,7 +2905,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SBY','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCB','Scribner State','Scribner','NE','USA',41.61033333,-96.62986111);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCC','Deadhorse','Deadhorse','AK','USA',70.19475583,-148.46516080);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCD','Merkel Field Sylacauga Municipal','Sylacauga','AL','USA',33.17183583,-86.30553778);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCE','University Park','NA','NA','USA',40.85120600,-77.84630200);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCE','University Park',NULL,NULL,'USA',40.85120600,-77.84630200);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCH','Schenectady Cty','Schenectady','NY','USA',42.85245556,-73.92886750);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCK','Stockton Metro','Stockton','CA','USA',37.89426694,-121.23862030);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SCM','Scammon Bay','Scammon Bay','AK','USA',61.84454111,-165.57374920);
@@ -2969,7 +2969,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SJN','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SJT','San Angelo Regional /Mathis','San Angelo','TX','USA',31.35775000,-100.49630560);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SJU','Luis Munoz Marin International','San Juan','PR','USA',18.43941667,-66.00183333);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SJX','Beaver Island','St James','MI','USA',45.69227778,-85.56630556);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SKA','Fairchild AFB','NA','NA','USA',47.61505800,-117.65580300);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SKA','Fairchild AFB',NULL,NULL,'USA',47.61505800,-117.65580300);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SKI','Sac City Municipal','Sac City','IA','USA',42.37908333,-94.97958333);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SKW','Skwentna','Skwentna','AK','USA',61.96529500,-151.19136610);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SKX','Taos Municipal','Taos','NM','USA',36.45819000,-105.67242890);
@@ -3006,7 +3006,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPF','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPG','Albert Whitted Municipal','St. Petersburg','FL','USA',27.76511111,-82.62697222);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPH','Springhill','Springhill','LA','USA',32.98316472,-93.41081028);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPI','Capital','Springfield','IL','USA',39.84395194,-89.67761861);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPN','Tinian International Airport','NA','NA','N Mariana Islands',14.99611100,145.62138400);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPN','Tinian International Airport',NULL,NULL,'N Mariana Islands',14.99611100,145.62138400);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPS','Sheppard AFB/Wichita Falls Municipal','Wichita Falls','TX','USA',33.98879611,-98.49189333);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPW','Spencer Municipal','Spencer','IA','USA',43.16552778,-95.20280556);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('SPX','Houston-Gulf','Houston','TX','USA',29.50836111,-95.05133333);
@@ -3360,7 +3360,7 @@ INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('Y74','
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('Y83','Sandusky City','Sandusky','MI','USA',43.45418694,-82.84938028);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('Y93','Atlanta Municipal','Atlanta','MI','USA',45.00000833,-84.13333667);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YAK','Yakutat','Yakutat','AK','USA',59.50336056,-139.66022610);
-INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YAP','Yap International','NA','NA','Federated States of Micronesia',9.51670000,138.10000000);
+INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YAP','Yap International',NULL,NULL,'Federated States of Micronesia',9.51670000,138.10000000);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YIP','Willow Run','Detroit','MI','USA',42.23792750,-83.53040889);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YKM','Yakima Air Terminal','Yakima','WA','USA',46.56816972,-120.54405940);
 INSERT INTO aeropuerto (iata,airport,city,state,country,lat,lon) VALUES ('YKN','Chan Gurney Municipal','Yankton','SD','USA',42.91669444,-97.38594444);

@@ -2,13 +2,12 @@ CREATE TABLE aeropuerto (
   iata    VARCHAR2(4),
   airport VARCHAR2(45)  NOT NULL,
   country VARCHAR2(30)  NOT NULL,
-  state   VARCHAR2(2)   NOT NULL,
-  city    VARCHAR2(35)  NOT NULL,
+  state   VARCHAR2(2),
+  city    VARCHAR2(35),
   lat     NUMBER        NOT NULL,
   lon     NUMBER        NOT NULL,
   CONSTRAINT pk_aeropuerto  PRIMARY KEY (iata),
-  UNIQUE (lat, lon),
-  UNIQUE (state, city)
+  UNIQUE (lat, lon)
 );
 
 CREATE TABLE fabricante (
@@ -61,8 +60,8 @@ CREATE TABLE vuelo (
   CONSTRAINT fk_vuelo_origin      FOREIGN KEY (origin)      REFERENCES aeropuerto(iata),
   CONSTRAINT fk_vuelo_destination FOREIGN KEY (destination) REFERENCES aeropuerto(iata),
   CONSTRAINT fk_vuelo_tailNum     FOREIGN KEY (tailNum)     REFERENCES avion(tailNum),
-  CONSTRAINT fk_avion_carrier     FOREIGN KEY (carrier)     REFERENCES aerolinea(code),
-  UNIQUE (origin, flightNum, flightDate),
+  CONSTRAINT fk_vuelo_carrier     FOREIGN KEY (carrier)     REFERENCES aerolinea(code),
+  UNIQUE (origin, carrier, flightNum, flightDate),
   CONSTRAINT ck_vuelo_distance            CHECK (distance >= 0),
   CONSTRAINT ck_vuelo_origin_destination  CHECK (origin <> destination)
 );
