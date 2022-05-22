@@ -1,11 +1,26 @@
 -- CONSULTA 1
 -- Calcular el número de compañías que operan en al menos cinco aeropuertos de Alaska
 -- --Aeropuertos alaska
--- SELECT iata AS IDS FROM aeropuerto WHERE state == "AK";
+-- SELECT iata AS IDS FROM aeropuerto WHERE STATE = 'AK';
 
 -- SELECT carrier AS vuelosAlaska FROM vuelo,avion WHERE (origin IN IDS OR destination IN IDS) AND vuelo.tailNum == avion.tailNum;
 
 -- SELECT COUNT(*) FROM aerolinea WHERE code IN vuelosAlaska GROUP BY code HAVING COUNT(*) > 4;
+
+SELECT COUNT(*)
+FROM AEROLINEA, (
+    SELECT CARRIER
+      FROM VUELO, AVION, (
+          SELECT iata AS IDS
+          FROM aeropuerto
+          WHERE STATE = 'AK'
+      )
+      WHERE (VUELO.origin in IDS OR VUELO.DESTINATION in IDS) AND VUELO.tailNum = AVION.tailNum
+     GROUP BY CARRIER
+     HAVING COUNT(*) > 4
+     ) vuelosAlaska
+WHERE AEROLINEA.CODE in vuelosAlaska.CARRIER
+
 
 -- CONSULTA 2
 -- Obtener el aeropuerto en el que operan los aviones más modernos (es decir, con menor media de edad). Obtener
