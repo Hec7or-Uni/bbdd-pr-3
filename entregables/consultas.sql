@@ -7,19 +7,35 @@
 
 -- SELECT COUNT(*) FROM aerolinea WHERE code IN vuelosAlaska GROUP BY code HAVING COUNT(*) > 4;
 
-SELECT COUNT(*)
+--SELECT COUNT(*)
+--FROM AEROLINEA, (
+--    SELECT CARRIER
+--      FROM VUELO, AVION, (
+--          SELECT iata AS IDS
+--          FROM aeropuerto
+--          WHERE STATE = 'AK'
+--      )
+--      WHERE (VUELO.origin in IDS OR VUELO.DESTINATION in IDS) AND VUELO.tailNum = AVION.tailNum
+--     GROUP BY CARRIER
+--     HAVING COUNT(*) > 4
+--     ) vuelosAlaska
+--WHERE AEROLINEA.CODE in vuelosAlaska.CARRIER
+
+SELECT COUNT(*) FROM (
+SELECT AEROLINEA.CODE
 FROM AEROLINEA, (
-    SELECT CARRIER
+    SELECT CARRIER, IDS
       FROM VUELO, AVION, (
           SELECT iata AS IDS
           FROM aeropuerto
           WHERE STATE = 'AK'
       )
       WHERE (VUELO.origin in IDS OR VUELO.DESTINATION in IDS) AND VUELO.tailNum = AVION.tailNum
-     GROUP BY CARRIER
-     HAVING COUNT(*) > 4
+     GROUP BY (CARRIER, IDS)
      ) vuelosAlaska
 WHERE AEROLINEA.CODE in vuelosAlaska.CARRIER
+GROUP BY AEROLINEA.CODE
+HAVING COUNT(*) > 4)
 
 
 -- CONSULTA 2
