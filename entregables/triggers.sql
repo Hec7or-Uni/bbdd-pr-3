@@ -38,4 +38,19 @@ BEGIN
 END; 
 /
 
--- TRIGGER 3:
+-- TRIGGER 3: NO puede haber retraso si hay cancelacion
+CREATE OR REPLACE TRIGGER EXC_RETRASOS
+BEFORE INSERT ON retrasos
+FOR EACH ROW
+DECLARE 
+    flag NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO flag
+    FROM cancelaciones
+    WHERE idVuelo = :NEW.idVuelo;
+
+    IF flag >= 1 THEN
+        RAISE_APPLICATION_ERROR (-20000, 'No puede haber retraso puesto que el vuelo ha sido cancelado');
+    END IF;
+END; 
+/
