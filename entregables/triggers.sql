@@ -38,18 +38,17 @@ BEGIN
 END; 
 /
 
--- TRIGGER 3: Un desvio no puede tener un origen distinto al origen del vuelo original o un desvio no puede tener un destino igual al destino del vuelo original
-CREATE OR REPLACE TRIGGER DIST_DESVIO
-AFTER INSERT ON desvios
+-- TRIGGER 3: Un vuelo no puede tener una fecha de salida anterior a la creacion del avion
+CREATE OR REPLACE TRIGGER FECHAS
+BEFORE INSERT ON vuelo
 FOR EACH ROW
 DECLARE 
     flag NUMBER;
 BEGIN
     SELECT COUNT(*) INTO flag
-    FROM vuelo
-    WHERE id = :NEW.idVuelo AND (origin <> NEW.origin OR destination = NEW.destination)
-        IF flag < 1 THEN
-            RAISE_APPLICATION_ERROR (-20000, 'Error al añadir desvio: el origen del vuelo es distinto al origen del desvio o el destino del vuelo es 
-                                    igual al destino del desvio');
+    FROM avion
+    WHERE year > SUBSTR(:NEW.flightDate,1,4)
+        IF flag >= 1 THEN
+            RAISE_APPLICATION_ERROR (-20000, 'Error al añadir el vuelo: la fecha del vuelo no puede ser anterior a la de creacion del avion');
     END IF;
 END; 
