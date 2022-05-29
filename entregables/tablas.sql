@@ -86,7 +86,6 @@ CREATE TABLE desvios (
   CONSTRAINT fk_desvios_origin        FOREIGN KEY (origin)      REFERENCES aeropuerto(iata),
   CONSTRAINT fk_desvios_tailnum       FOREIGN KEY (tailNum)     REFERENCES avion(tailNum),
   CONSTRAINT fk_desvios_destination   FOREIGN KEY (destination) REFERENCES aeropuerto(iata),
-  UNIQUE (id, idVuelo)
 );
 
 CREATE TABLE retrasos (
