@@ -24,7 +24,7 @@ from (
 	from aeropuerto AE, vuelo V, avion AV
 	where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
 		AV.year is not null
-	group by AE.iata
+	group by AE.airport, AE.iata
 ) S
 where S.average = (
 	select MIN(average) as minimo
@@ -33,7 +33,7 @@ where S.average = (
 		from aeropuerto AE, vuelo V, avion AV
 		where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
 			AV.year is not null
-		group by AE.iata
+		group by AE.airport, AE.iata
 	) A
 );
 
@@ -62,7 +62,6 @@ from aerolinea A, (
 		group by T.carrier
 	) B
 	where A.carrier = B.carrier
-	order by porcentaje desc
 ) B
 where A.code = B.carrier and B.porcentaje = (
 	select MAX(porcentaje)
@@ -86,7 +85,6 @@ where A.code = B.carrier and B.porcentaje = (
 			group by T.carrier
 		) B
 		where A.carrier = B.carrier
-		order by porcentaje desc
 	) A
 );
 
