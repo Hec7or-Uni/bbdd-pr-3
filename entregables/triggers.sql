@@ -17,7 +17,7 @@ END;
 /
 
 -- TRIGGER 2:
--- 
+-- compurbe a que exista un primer vuelo desvio correcto
 CREATE OR REPLACE TRIGGER EXT_PRIMER_DESVIO
 AFTER INSERT ON desvios
 FOR EACH ROW
