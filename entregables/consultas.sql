@@ -4,10 +4,9 @@ select count(*) as "Número de aerolineas"
 from (
 	select carrier
 	from (
-		select V.origin, carrier
+		select distinct V.origin, carrier
 		from aeropuerto A, vuelo V
 		where A.iata = V.origin and A.state = 'AK'
-		group by iata, carrier
 	) A
 	group by carrier
 	having count(*) >= 5
