@@ -36,6 +36,21 @@ where S.average = (
 	) A
 );
 
+-- Simplificada
+create view edadMediaAeropuertos as
+select AE.airport, AE.iata, AVG(2022 - AV.year) as average
+from aeropuerto AE, vuelo V, avion AV
+where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
+	AV.year is not null
+group by AE.airport, AE.iata
+
+select S.airport, S.iata, FLOOR(S.average)
+from edadMediaAeropuertos S
+where S.average = (
+	select MIN(average) as minimo
+	from edadMediaAeropuertos A
+);
+
 -- CONSULTA 3
 -- Obtener la compañía (o compañías, en caso de empate) con el mayor porcentaje de vuelos que despegan y aterrizan
 -- en un mismo estado.
@@ -84,4 +99,34 @@ where A.code = B.carrier and B.porcentaje = (
 		) B
 		where A.carrier = B.carrier
 	) A
+);
+
+-- Simplificada
+
+create view porcentajeSalidasLLegadasMismoEstado as
+select A.carrier, ROUND((A.num / B.num * 100), 2) as porcentaje
+from (
+	select S.carrier, COUNT(*) as num
+	from (
+		select V.carrier, A1.state as origin, A2.state as destination
+		from vuelo V, aeropuerto A1, aeropuerto A2
+		where V.origin = A1.iata and V.destination = A2.iata and A1.state = A2.state
+	) S
+	group by S.carrier
+) A, (
+	select T.carrier, COUNT(*) as num
+	from (
+		select V.carrier, A1.state as origin, A2.state as destination
+		from vuelo V, aeropuerto A1, aeropuerto A2
+		where V.origin = A1.iata and V.destination = A2.iata
+	) T
+	group by T.carrier
+) B
+where A.carrier = B.carrier
+
+select A.name, B.porcentaje
+from aerolinea A, porcentajeSalidasLLegadasMismoEstado B
+where A.code = B.carrier and B.porcentaje = (
+	select MAX(porcentaje)
+	from porcentajeSalidasLLegadasMismoEstado A
 );
