@@ -27,6 +27,7 @@ where A.iata = V.origin and A.state = 'AK';
 
 consulta2:
 
+--deprecated porque hemos conseguido otra con mejor rendimiento
 CREATE MATERIALIZED VIEW consultaMod2 AS
 select AE.airport, AE.iata, AVG(2022 - AV.year) as average
 from aeropuerto AE, vuelo V, avion AV
@@ -34,5 +35,46 @@ where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
 AV.year is not null
 group by AE.airport, AE.iata;
 
+-- con la particion vertical, a nivel global no afecta en nada
+CREATE MATERIALIZED VIEW consultaMod2_2 AS
+select AE.airport, AE.iata, AVG(2022 - AV.year) as average
+from aeropuerto AE, vueloPart V, avion AV
+where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
+AV.year is not null
+group by AE.airport, AE.iata;
+
+select S.airport, S.iata, FLOOR(S.average)
+from consultaMod2_2 S
+where S.average = (
+	select MIN(average) as minimo
+	from consultaMod2_2 A
+);
 
 consulta3:
+CREATE MATERIALIZED VIEW consulta3 AS
+select A.carrier, ROUND((A.num / B.num * 100), 2) as porcentaje
+from (
+	select S.carrier, COUNT(*) as num
+	from (
+		select V.carrier, A1.state as origin, A2.state as destination
+		from vuelo V, aeropuerto A1, aeropuerto A2
+		where V.origin = A1.iata and V.destination = A2.iata and A1.state = A2.state
+	) S
+	group by S.carrier
+) A, (
+	select T.carrier, COUNT(*) as num
+	from (
+		select V.carrier, A1.state as origin, A2.state as destination
+		from vuelo V, aeropuerto A1, aeropuerto A2
+		where V.origin = A1.iata and V.destination = A2.iata
+	) T
+	group by T.carrier
+) B
+where A.carrier = B.carrier;
+
+select A.name, B.porcentaje
+from aerolinea A, consulta3 B
+where A.code = B.carrier and B.porcentaje = (
+	select MAX(porcentaje)
+	from consulta3 A
+);

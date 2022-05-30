@@ -44,9 +44,7 @@ Predicate Information (identified by operation id):
               MAX(ROUND("A"."NUM"/"B"."NUM"*100,2)) FROM  (SELECT "V"."CARRIER" 
               "CARRIER",COUNT(*) "NUM" FROM "VUELO" "V" GROUP BY "V"."CARRIER") "B", (SELECT 
               "V"."CARRIER" "CARRIER",COUNT(*) "NUM" FROM "AEROPUERTO" "A2","AEROPUERTO" 
-
-PLAN_TABLE_OUTPUT
------------------------------
+              
               "A1","VUELO" "V" WHERE "V"."ORIGIN"="A1"."IATA" AND "A1"."STATE"="A2"."STATE" AND 
               "V"."DESTINATION"="A2"."IATA" GROUP BY "V"."CARRIER") "A" WHERE 
               "A"."CARRIER"="B"."CARRIER"))
