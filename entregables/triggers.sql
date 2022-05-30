@@ -49,7 +49,7 @@ DECLARE
 BEGIN
     SELECT COUNT(*) INTO flag
     FROM avion
-    WHERE year > SUBSTR(:NEW.flightDate,1,4)
+    WHERE year > SUBSTR(:NEW.flightDate,1,4);
     IF flag >= 1 THEN
         RAISE_APPLICATION_ERROR (-20003, 'Error al añadir el vuelo: la fecha del vuelo no puede ser anterior a la de creacion del avion');
     END IF;
