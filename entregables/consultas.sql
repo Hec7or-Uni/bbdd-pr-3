@@ -42,7 +42,7 @@ select AE.airport, AE.iata, AVG(2022 - AV.year) as average
 from aeropuerto AE, vuelo V, avion AV
 where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
 	AV.year is not null
-group by AE.airport, AE.iata
+group by AE.airport, AE.iata;
 
 select S.airport, S.iata, FLOOR(S.average)
 from edadMediaAeropuertos S
