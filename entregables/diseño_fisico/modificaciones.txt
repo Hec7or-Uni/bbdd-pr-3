@@ -19,11 +19,20 @@ select id, origin, destination, tailNum, carrier from vuelo
 consulta1:
 create bitmap index state on aeropuerto(state);
 
-
+CREATE MATERIALIZED VIEW alaska AS
+select distinct V.origin, carrier
+from aeropuerto A, vuelo V
+where A.iata = V.origin and A.state = 'AK';
 
 
 consulta2:
 
+CREATE MATERIALIZED VIEW consultaMod2 AS
+select AE.airport, AE.iata, AVG(2022 - AV.year) as average
+from aeropuerto AE, vuelo V, avion AV
+where (AE.iata = V.origin or AE.iata = V.origin) and AV.tailNum = V.tailNum and
+AV.year is not null
+group by AE.airport, AE.iata;
 
 
 consulta3:
