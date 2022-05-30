@@ -11,7 +11,7 @@ BEGIN
     WHERE idVuelo = :NEW.idVuelo;
 
     IF flag >= 1 THEN
-        RAISE_APPLICATION_ERROR (-20000, 'No puede haber desvio puesto que el vuelo ha sido cancelado');
+        RAISE_APPLICATION_ERROR (-20001, 'No puede haber desvio puesto que el vuelo ha sido cancelado');
     END IF;
 END; 
 /
@@ -19,23 +19,22 @@ END;
 -- TRIGGER 2:
 -- compurbe a que exista un primer vuelo desvio correcto
 CREATE OR REPLACE TRIGGER EXT_PRIMER_DESVIO
-AFTER INSERT ON desvios
+BEFORE INSERT ON desvios
 FOR EACH ROW
 DECLARE 
     flag NUMBER;
-    o_tailNum VARCHAR(7);
+    origin VARCHAR2(4);
 BEGIN
-    SELECT tailNum INTO o_tailNum
+    SELECT origin INTO origin
     FROM vuelo
     WHERE id = :NEW.idVuelo;
 
-    IF o_tailNum <> :NEW.tailNum THEN   -- No es el mismo avion que el del vuelo original vuelo
-        SELECT COUNT(*) INTO flag
-        FROM desvios
-        WHERE id = :NEW.id;
-        IF flag > 0 THEN
-            RAISE_APPLICATION_ERROR (-20000, 'No existe el primer desvio del vuelo: ' || :NEW.idVuelo || ', con matricula: ' || o_tailNum);
-        END IF;
+    SELECT COUNT(*) INTO flag
+    FROM desvios
+    WHERE idVuelo = :NEW.idVuelo;
+
+    IF origin <> :NEW.origin and flag = 0 THEN   -- No es el mismo avion que el del vuelo original vuelo
+        RAISE_APPLICATION_ERROR (-20002, 'No existe el primer desvio del vuelo: ' || :NEW.idVuelo || ', con matricula: ' || origin);
     END IF;
 END; 
 /
@@ -52,6 +51,6 @@ BEGIN
     FROM avion
     WHERE year > SUBSTR(:NEW.flightDate,1,4)
     IF flag >= 1 THEN
-        RAISE_APPLICATION_ERROR (-20000, 'Error al añadir el vuelo: la fecha del vuelo no puede ser anterior a la de creacion del avion');
+        RAISE_APPLICATION_ERROR (-20003, 'Error al añadir el vuelo: la fecha del vuelo no puede ser anterior a la de creacion del avion');
     END IF;
 END; 
