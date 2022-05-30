@@ -39,10 +39,9 @@ where S.average = (
 -- CONSULTA 3
 -- Obtener la compañía (o compañías, en caso de empate) con el mayor porcentaje de vuelos que despegan y aterrizan
 -- en un mismo estado.
-
-select A.name
+select A.name, B.porcentaje
 from aerolinea A, (
-	select A.carrier, ROUND((A.num / B.num * 100), 2) as 'porcentaje'
+	select A.carrier, ROUND((A.num / B.num * 100), 2) as porcentaje
 	from (
 		select S.carrier, COUNT(*) as num
 		from (
@@ -65,7 +64,7 @@ from aerolinea A, (
 where A.code = B.carrier and B.porcentaje = (
 	select MAX(porcentaje)
 	from (
-		select A.carrier, ROUND((A.num / B.num * 100), 2) as 'porcentaje'
+		select A.carrier, ROUND((A.num / B.num * 100), 2) as porcentaje
 		from (
 			select S.carrier, COUNT(*) as num
 			from (
@@ -86,4 +85,3 @@ where A.code = B.carrier and B.porcentaje = (
 		where A.carrier = B.carrier
 	) A
 );
-
